@@ -1,0 +1,38 @@
+<div class="row top-free-30" ng-controller="ProductsCtrl">
+  <div class="col-sm-3">
+    <div class="list-group" style="text-align:center;">
+      <div class="list-group-item" style="background-color: #333; color: #fff;"><strong>经营产品</strong></div>
+      <div class="wrapper" ng-repeat="product in products">
+        <a class="list-group-item" id="{{product._id}}" ng-mouseover="showProducts(this, product)"><strong>{{product.name}}</strong></a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-9">
+    <div class="well">
+      <div class="row">
+        <div class="col-sm-3">
+          <img id="product-brand-image" class="img-thumbnail product-img" style="width: 170px; height: 170px;" src="">
+        </div>
+        <div class="col-sm-9">
+          <h3 id="product-brand-title"></h3>
+          <p id="product-brand-desc"></p>
+        </div>
+      </div>
+    </div>
+    <div class="supplies_list" ng-repeat="supply in supplies">
+      <div class="row" ng-click="supplySelect(supply)">
+        <div class="col-sm-3 supplies-item">
+          <img class="img-thumbnail" style="width: 160px; height: 160px;" src="/images/supply/{{supply._id}}.jpg">
+        </div>
+        <div class="col-sm-8 well">
+          <strong>产品名称：{{supply.name}}</strong><br />
+          <strong>原麦汁浓度：{{supply.wort_dense}}</strong><br />
+          <strong>酒精浓度：{{supply.alcohol_dense}}</strong><br />
+          <strong>规格：{{supply.specification}}</strong><br />
+          <strong>保质期：{{supply.sell_by_date}}</strong><br />
+          <strong>箱尺寸：{{supply.box_size}}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

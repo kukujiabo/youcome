@@ -1,0 +1,4 @@
+{ "_id" : { "$oid" : "541fc678f04330042fa6ee23" }, "name" : "联系人", "value" : "王先生", "ord" : 10, "active" : 1 }
+{ "_id" : { "$oid" : "541fc678f04330042fa6ee24" }, "name" : "地址", "value" : "上海市闵行区万源路786号12楼", "ord" : 20, "active" : 1 }
+{ "_id" : { "$oid" : "541fc678f04330042fa6ee25" }, "name" : "服务热线", "value" : "400-663-6617", "ord" : 30, "active" : 1 }
+{ "_id" : { "$oid" : "541fc678f04330042fa6ee26" }, "name" : "邮箱", "value" : "493817668@qq.com", "ord" : 40, "active" : 1 }

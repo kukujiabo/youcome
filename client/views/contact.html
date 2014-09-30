@@ -1,0 +1,12 @@
+<div class="container contact-container">
+  <div class="row">
+    <div class="col-sm-5 card-board" ng-controller="ContactCtrl">
+      <h3>上海酉康实业有限公司</h3>
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="contact in contacts">
+          <em>{{contact.name}}：</em>{{contact.value}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

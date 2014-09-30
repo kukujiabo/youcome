@@ -1,0 +1,31 @@
+<div class="row top-free-20" style="text-align:center;">
+  <div class="col-sm-9" ng-controller="MainCtrl">
+    <div class="hot-recom">
+      <h4>热供品牌<strong style="color:red;">hot!</strong></h4>
+    </div>
+    <div class="wrap" >
+      <div class="panel hot-item" ng-click="showSupplies(hot.productId)" ng-repeat="hot in hots">
+        <div class="panel-body">
+          <img class="img-thumbnail product-img" ng-mouseover="emphasisHots(this)" src="{{hot.imagePath}}">
+        </div>
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>{{hot.name}}<strong></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3" ng-controller="ContactCtrl">
+    <div class="list-group">
+      <div class="list-group-item list-head">
+        <span>业务联系</span>
+      </div>
+      <div class="wrap" ng-repeat="contact in contacts">
+        <div class="list-group-item">
+          <span>{{contact.name}}：{{contact.value}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+</script>

@@ -1,0 +1,2 @@
+{ "_id" : { "$oid" : "5405da1b74de5d84629aeb0b" }, "name" : "brand-3", "path" : "/images/brand-3.jpg", "desc" : "", "ord" : 1, "url" : "#", "active" : 1 }
+{ "_id" : { "$oid" : "5405dd1974de5d84629aeb0c" }, "name" : "brand-1", "path" : "/images/brand-1.jpg", "desc" : "啤酒怎么喝，你真的知道吗？ ...", "ord" : 1, "url" : "#", "active" : 1, "first" : "active" }

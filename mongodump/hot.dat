@@ -1,0 +1,5 @@
+{ "_id" : { "$oid" : "541e625a3eaeb56dbc46c6c0" }, "active" : 0 }
+{ "_id" : { "$oid" : "5422ef7dab183c2a5bbd7964" }, "name" : "奥丁格", "productId" : "541ae7446899ceb24e2cbcfa", "imagePath" : "/images/hot/ottinger-hot.jpg", "linkUrl" : "", "ord" : 10, "active" : 1 }
+{ "_id" : { "$oid" : "5422ef7dab183c2a5bbd7965" }, "name" : "梅塞尔", "productId" : "541ae7446899ceb24e2cbcfb", "imagePath" : "/images/hot/messier-hot.jpg", "linkUrl" : "", "ord" : 20, "active" : 1 }
+{ "_id" : { "$oid" : "5426d893b65ca3111e56e77d" }, "name" : "猛士系列", "productId" : "5426d6c9c37898084b0c9388", "imagePath" : "/images/hot/schwarzbier-hot.jpg", "linkUrl" : "", "ord" : 15, "active" : 1 }
+{ "_id" : { "$oid" : "5426db350d0362718b03caac" }, "name" : "凯撒", "productId" : "5422f35b931eba007a91a495", "imagePath" : "/images/hot/kaiserdom-hot.jpg", "linkUrl" : "", "ord" : 0, "active" : 1 }
