@@ -1,5 +1,6 @@
 var settings = require("../settings"),
     Db = require("mongodb").Db,
+    ObjectID = require("mongodb").ObjectID,
     Connection = require("mongodb").Connection,
     Server = require("mongodb").Server;
 
@@ -42,7 +43,7 @@ database.prototype.get = function (collectionName, id, callback) {
         return callback(err);
       }
 
-      collection.findOne({id: id}, function (err, obj) {
+      collection.findOne({_id: new ObjectID(id)}, function (err, obj) {
         db.close();
         if (err) {
           callback(err);

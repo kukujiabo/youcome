@@ -12,4 +12,10 @@ products.getDisplayProducts = function (callback) {
 
   Product.getMuti({"active": 1}, callback);
 
-}
+};
+
+products.getProductById = function (productId, callback) {
+
+  Product.get(productId, callback);
+
+};
