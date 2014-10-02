@@ -10,7 +10,7 @@ angular.module("yocomeApp")
 .controller("MainCtrl", function ($scope, $http) {
   hotList($scope, $http);
   $scope.showSupplies = function (productId) {
-    window.location.href="/products";
+    window.location.href="/products?productId=" + productId;
   };
 });
 

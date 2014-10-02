@@ -20,12 +20,22 @@ module.exports = function (app) {
   });
 
   app.get("/api/products", function (req, res) {
-    Controllers.products.getDisplayProducts (function (err, result) {
-      if (err) {
-        return res.json({"err": err});
-      }
-      res.json(result);
-    });
+    var productId = req.query.productId;
+    if (productId == undefined || productId == null) {
+      Controllers.products.getDisplayProducts (function (err, result) {
+        if (err) {
+          return res.json({"err": err});
+        }
+        res.json(result);
+      });
+    } else {
+      Controllers.products.getProductById (productId, function (err, result) {
+        if (err) {
+          return res.json({"err": err});
+        }
+        res.json(result);
+      });
+    }
   });
 
   app.get("/api/hots", function (req, res) {
@@ -60,7 +70,7 @@ module.exports = function (app) {
     Controllers.introduction.getDisplayIntroduction (function (err, result) {
       if (err) {
         return res.json({"err": err});
-      } 
+      }
       res.json(result);
     });
   });

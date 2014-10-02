@@ -18,3 +18,8 @@ function suppliesList($scope, $http) {
   });
 
 }
+
+function showSupplies(productId) {
+  window.location.href = "/products:" + productId;
+
+}

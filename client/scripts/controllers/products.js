@@ -22,12 +22,27 @@ function productBrandList ($scope, $http, $routeParams) {
     method: "GET"
   }).success(function (products) {
     $scope.products = products;
-    var productId = $routeParams.id;
+    var productId = $routeParams.productId;
     if (productId == undefined || productId == null) {
       suppliesBrandShow(products[0]);
+      suppliesDisplay($scope, $http, products[0]._id);
     } else {
-
+      selectedProduct(productId, $http, $scope);
     }
+  }).error(function (err) {
+    console.log(err);
+  })
+}
+
+function selectedProduct (productId, $http, $scope) {
+  $http({
+    "url": "/api/products",
+    "method": "GET",
+    "params": {"productId": productId}
+  }).success(function (result) {
+    console.log(result);
+    suppliesBrandShow(result);
+    suppliesDisplay($scope, $http, result._id);
   }).error(function (err) {
     console.log(err);
   })
