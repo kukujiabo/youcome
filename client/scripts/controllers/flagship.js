@@ -11,6 +11,7 @@ function getFlagImg ($scope, $http) {
     "url": "/api/flagship",
     "method": "GET"
   }).success(function (result) {
+    console.log(result);
     $scope.flags = result;
   }).error(function (err) {
     console.log(err);

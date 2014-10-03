@@ -1,6 +1,6 @@
 var database = require("./db"),
     mongodb = new database(),
-    dbName = "flagship";
+    dbName = "flagships";
 
 function Flagship (flagship) {
   this.imgPath = flagship.imgPath;
