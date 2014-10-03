@@ -7,7 +7,7 @@
   </div>
   <div class="well">
     <div class="container" style="text-align:center; width:1000px;" >
-      <img class="nor-display" src="{{flag.imgPath}}/{{flag.name}}" ng-repeat="flag in flags">
+      <img class="nor-display" id="fg-{{flag._id}}" src="{{flag.imgPath}}/{{flag.name}}" ng-repeat="flag in flags track by $index">
     </div>
   </div>
 </div>
