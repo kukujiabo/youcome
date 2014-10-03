@@ -38,7 +38,7 @@ angular
     })
     .when("/flagship", {
       templateUrl: "views/flagship.html",
-      controller: "FlagCtrl"
+      controller: "FlagshipCtrl"
     })
     .otherwise({
       redirectTo: "/"
@@ -68,3 +68,16 @@ function AnimaCtrl ($scope, $http) {
     $scope.beforeOver = $("#" + art._id);
   }
 }
+
+angular.module("yocomeApp")
+.controller("FlagshipCtrl", function ($scope, $http) {
+  $http({
+    "url": "/api/flagship",
+    "method": "GET" 
+  }).success(function (result) {
+    $scope.flags = result; 
+  }).error(function (err) {
+    console.log(err); 
+  });
+
+});

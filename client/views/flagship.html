@@ -1,13 +1,13 @@
-<div class="wrap" ng-controller="FlagCtrl">
+<div class="wrap" ng-controller="FlagshipCtrl">
   <div class="container" style="text-align:center; width:1000px;">
     <h3 class="page-header top-free-20">---旗舰店风采---</h3>
     <p>
     旗舰店地址：上海市浦东新区启帆路628号，地铁6号线洲海路站旁，森兰商都2层。欢迎您莅临体验！
     </p>
   </div>
-  <div class="well"  style="text-align:center;">
-    <div class="container" ng-repeat="flag in flags">
-      <img class="nor-display" src="{{flag.imgUrl}}/{{flag.name}}">
+  <div class="well">
+    <div class="container" style="text-align:center; width:1000px;" >
+      <img class="nor-display" src="{{flag.imgPath}}/{{flag.name}}" ng-repeat="flag in flags">
     </div>
   </div>
 </div>

@@ -218,6 +218,13 @@ div.side-padding-10 {
   margin-bottom: 20px;
 }
 
+.nor-display {
+  float: left;
+  width: 300px;
+  height: 172px;
+  margin: 10px;
+}
+
 /* Main marketing message and sign up button */
 .jumbotron {
   text-align: center;
