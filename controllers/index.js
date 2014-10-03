@@ -16,4 +16,6 @@ Controllers.supplies = require("./supplies");
 
 Controllers.introduction = require("./introduction");
 
+Controllers.flagships = require("./flagships");
+
 module.exports = Controllers;

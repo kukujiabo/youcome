@@ -75,6 +75,15 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/flagship", function (req, res) {
+    Controllers.flagships.getDisplayFlagships (function (err, result) {
+      if (err) {
+        return res.json({"err": err});
+      }
+      res.json(result);
+    });
+  });
+
   app.get(/.*/, function (req, res) {
     res.sendfile("./client/index.html");
   });

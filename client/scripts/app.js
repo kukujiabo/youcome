@@ -36,6 +36,10 @@ angular
       templateUrl: "views/arts.html",
       controller: "ArtsCtrl"
     })
+    .when("/flagship", {
+      templateUrl: "views/flagship.html",
+      controller: "FlagCtrl"
+    })
     .otherwise({
       redirectTo: "/"
     });
