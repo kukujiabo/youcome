@@ -71,13 +71,16 @@ function AnimaCtrl ($scope, $http) {
 
 angular.module("yocomeApp")
 .controller("FlagshipCtrl", function ($scope, $http) {
+  $scope.displayLarge = function (that) {
+  };
+
   $http({
     "url": "/api/flagship",
-    "method": "GET" 
+    "method": "GET"
   }).success(function (result) {
-    $scope.flags = result; 
+    $scope.flags = result;
   }).error(function (err) {
-    console.log(err); 
+    console.log(err);
   });
-
 });
+

@@ -32,6 +32,6 @@ Art.get = function (id, callback) {
 Art.getMuti = function (query, callback) {
   var conditions = {};
   conditions.fields = {"title": 1, "desc": 1, "content": 1, "active": 1, "url": 1, "imgPath": 1};
-  conditions.order = {"id": 1};
+  conditions.order = {"ord": 1};
   mongodb.getMuti(dbName, query, conditions, callback);
 };
