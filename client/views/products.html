@@ -3,7 +3,7 @@
     <div class="list-group" style="text-align:center;">
       <div class="list-group-item" style="background-color: #333; color: #fff;"><strong>经营产品</strong></div>
       <div class="wrapper" ng-repeat="product in products">
-        <a class="list-group-item" id="{{product._id}}" ng-mouseover="showProducts(this, product)"><strong>{{product.name}}</strong></a>
+        <a class="list-group-item" id="{{product._id}}" ng-click="showProducts(this, product)"><strong>{{product.name}}</strong></a>
       </div>
     </div>
   </div>
