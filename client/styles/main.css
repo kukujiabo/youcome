@@ -135,10 +135,7 @@ div.supplies-item {
 }
 
 .picture-slide {
-  /*filter:alpha(Opacity=80);*/
-  /*-moz-opacity:0.5;*/
-  /*opacity: 0.5;*/
-  border-radius: 20px;
+ border-radius: 20px;
 }
 
 .slide-pic {
@@ -224,6 +221,7 @@ div.side-padding-10 {
   height: 172px;
   margin: 10px;
 }
+
 
 /* Main marketing message and sign up button */
 .jumbotron {
