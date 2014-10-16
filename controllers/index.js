@@ -18,4 +18,6 @@ Controllers.introduction = require("./introduction");
 
 Controllers.flagships = require("./flagships");
 
+Controllers.countries = require('./countries');
+
 module.exports = Controllers;

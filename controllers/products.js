@@ -19,3 +19,9 @@ products.getProductById = function (productId, callback) {
   Product.get(productId, callback);
 
 };
+
+products.getProductsByCountry = function (id, callback) {
+
+  Product.getMuti({'active': 1, 'country': id}, callback);
+
+};
