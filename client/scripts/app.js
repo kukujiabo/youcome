@@ -20,10 +20,6 @@ angular
       templateUrl: "views/products.html",
       controller: "ProductsCtrl"
     })
-    .when("/products/:id", {
-      templateUrl: "views/products.html",
-      controller: "ProductsCtrl"
-    })
     .when("/about", {
       templateUrl: "views/about.html",
       controller: "AboutCtrl"

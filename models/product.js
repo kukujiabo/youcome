@@ -11,6 +11,7 @@ function Product (product) {
   this.hot = product.hot;
   this.ord = product.ord;
   this.type = product.type;
+  this.country = product.country;
 };
 
 module.exports = Product;
@@ -24,7 +25,8 @@ Product.prototype.save = function (callback) {
     active: this.active,
     hot: this.hot,
     ord: this.ord,
-    type: this.type
+    type: this.type,
+    country: this.country
   }
   mongodb.save(dbName, product, callback);
 };
@@ -35,7 +37,7 @@ Product.get = function (id, callback) {
 
 Product.getMuti = function (query, callback) {
   var conditions = {};
-  conditions.fields = {"_id": 1, "name": 1, "imagePath": 1, "content": 1, "desc": 1, "active": 1, "hot": 1, "ord": 1, "type": 1};
+  conditions.fields = {"_id": 1, "name": 1, "imagePath": 1, "content": 1, "desc": 1, "active": 1, "hot": 1, "ord": 1, "type": 1, 'country': 1};
   conditions.order = {"ord": 1};
   mongodb.getMuti(dbName, query, conditions, callback);
 };

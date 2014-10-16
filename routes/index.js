@@ -19,6 +19,37 @@ module.exports = function (app) {
     });
   });
 
+  app.get('/api/prods', function (req, res) {
+    var c_id = req.query.c_id;
+
+    if (c_id == undefined || c_id == null) {
+      var productId = req.query.productId;
+
+      if (productId == undefined || productId == null) {
+          Controllers.products.getDisplayProducts (function (err, result) {
+            if (err) {
+              return res.json({'err': err});
+            }
+            res.json(result);
+          });
+      } else {
+        Controllers.products.getProductById (productId, function (err, result) {
+          if (err) {
+            return res.json({'err': err});
+          }
+          res.json(result);
+        });
+      }
+    } else {
+      Controllers.products.getProductsByCountry (c_id, function (err, result) {
+        if (err) {
+          return res.json({'err': err});
+        }
+        res.json(result);
+      });
+    }
+  });
+
   app.get("/api/products", function (req, res) {
     var productId = req.query.productId;
     if (productId == undefined || productId == null) {
@@ -84,8 +115,18 @@ module.exports = function (app) {
     });
   });
 
+  app.get('/api/countries', function (req, res) {
+    Controllers.countries.getDisplayCountries (function (err, result) {
+      if (err) {
+        return res.json({err: err});
+      }
+      res.json(result);
+    });
+  });
+
   app.get(/.*/, function (req, res) {
     res.sendfile("./client/index.html");
   });
+
 
 };
