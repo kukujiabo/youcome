@@ -20,4 +20,6 @@ Controllers.flagships = require("./flagships");
 
 Controllers.countries = require('./countries');
 
+Controllers.catas = require('./catagories');
+
 module.exports = Controllers;
