@@ -39,11 +39,3 @@ Contact.getMuti = function (query, callback) {
   conditions.order = {"ord": 1};
   mongodb.getMuti(dbName, query, conditions, callback);
 };
-
-Contact.getMuti({active: 1}, function (err, result) {
-  if (err) {
-    console.log(err);
-    return;
-  }
-  console.log(result);
-});

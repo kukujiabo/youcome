@@ -1,5 +1,6 @@
 'use strict';
 
+(function () {
 angular.module("yocomeApp")
 .controller("ProductsCtrl", function ($scope ,$http, $routeParams) {
   $scope.products = {}; //产品
@@ -63,7 +64,7 @@ angular.module("yocomeApp")
       $scope.cblocks.each(function () {
         //商品条目收起完毕后显示国家信息.
         if ($(this).css('display') == 'none') {
-          $(this).slideToggle('fast'); 
+          $(this).slideToggle('fast');
         }
       });
 
@@ -72,29 +73,29 @@ angular.module("yocomeApp")
       $scope.subMenus.each(function () {
         var that = $(this);
         if (that.attr('id') == subMenuBlock.attr('id')) {
-          return; 
+          return;
         } else {
           if (that.css('display') != 'none') {
             that.slideToggle('normal');
           }
         }
       });
-      
+
       //显示国家描述
       if (infoBlock.css('display') == 'none') {
         infoBlock.slideToggle('normal');
       }
-      
+
       //显示文字描述
       if (descBlock.css('display') == 'none') {
         descBlock.slideToggle('normal');
       }
-      
+
       //收起其他国家的描述
       $scope.cblocks.each(function () {
         var that = $(this);
         if (that.attr('id') == infoBlock.attr('id')) {
-          return; 
+          return;
         } else {
           if (that.css('display') != 'none') {
             that.slideToggle('normal');
@@ -106,16 +107,20 @@ angular.module("yocomeApp")
       $scope.descBlocks.each(function () {
         var that = $(this);
         if (that.attr('id') == descBlock.attr('id')) {
-          return; 
+          return;
         } else {
           if (that.css('display') != 'none') {
-            that.hide(); 
+            that.hide();
           }
         }
       });
     }
 
     subMenuBlock.slideToggle('normal');
+  };
+
+  $scope.productLine = function (cata) {
+
   };
 
   $scope.supplySelect = function (supply) {
@@ -202,9 +207,7 @@ function productsList($scope, $http) {
       var cid = countries[ct]._id;
       var products = result;
       var product = undefined;
-
       $scope.products[cid] = [];
-
       for (var pd in products) {
         product = products[pd];
         if (product.country == cid) {
@@ -216,3 +219,4 @@ function productsList($scope, $http) {
     console.log(err);
   });
 }
+})();

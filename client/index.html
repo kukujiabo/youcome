@@ -5,79 +5,53 @@
     <title>酉康</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
   </head>
   <body class="yo-background" ng-app="yocomeApp">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <!-- Add your site or application content here -->
    <div class="back-wall">
-     <!--<div class="bk-img" style="position:absolute; left: 0px; top: 0px; width:100%; z-index:0;">-->
-       <!--<img src="/images/back.jpg" height="100%" width="100%">-->
-     <!--</div>-->
      <div class="brand-title">
-       <h2 class="page-header">YouCome<strong>·酉康</strong></h2>
+       <span class="active-header">
+        <h2 class="page-header">YouCome<strong>·酉康</strong></h2>
+       </span>
      </div>
-     <div class="navbar navbar-inverse navbar-static-top top-free-20 navbar-title" role="navigation">
+     <!--<div class="navbar navbar-inverse navbar-static-top top-free-20 navbar-title" role="navigation">-->
+     <div class="nav-self">
        <div class="container index-nav">
          <div class="nav-collapse">
            <ul class="nav navbar-nav">
              <li>
-               <a href="/">首页</a>
+               <a class="nav-family" href="/">首页</a>
              </li>
              <li>
-               <a href="/products">产品展示</a>
+               <a class="nav-family" href="/products">产品展示</a>
              </li>
              <li>
-               <a href="/flagship">旗舰体验</a>
+               <a class="nav-family" href="/flagship">旗舰体验</a>
              </li>
              <li>
-               <a href="/arts">文化小站</a>
+               <a class="nav-family" href="/arts">文化小站</a>
              </li>
              <li>
-               <a href="/about">公司介绍</a>
+               <a class="nav-family" href="/about">公司介绍</a>
              </li>
              <li>
-               <a href="/contact">业务联系</a>
+               <a class="nav-family" href="/contact">业务联系</a>
+             </li>
+             <li>
+             <a class="nav-family" href="/contact">阿里商铺<img style="width:20px; height:18px;" src="/images/arrow-right.png"></a>
              </li>
            </ul>
          </div>
        </div>
      </div>
-     <div class="row">
-       <div class="col-sm-9">
-         <div class="pic-circle" id="brand-pic">
-           <!--<p id="brand-desc"></p>-->
-         </div>
-       </div>
-       <div class="col-sm-3">
-         <div class="list-group" style="text-align:center;" ng-controller="AnimaCtrl">
-           <div class="list-group-item list-head">
-             <span>文化小知识</span>
-           </div>
-           <div class="wrapper" id="brand-list" ng-repeat="art in arts">
-             <a class="list-group-item" ng-mouseover="showBrandPicture(this, art)" id="{{art._id}}" href="{{art.url}}">{{art.title}}</a>
-           </div>
-         </div>
-       </div>
-     </div>
-     <div ng-view=""></div>
-     </div>
-
+     <br>
+     <div class="content-center" ng-view=""></div>
+     <hr>
      <footer class="foot">
        <p>版权所有：上海酉康实业有限公司</p>
      </footer>
-
+   </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

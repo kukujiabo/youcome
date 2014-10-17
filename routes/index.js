@@ -116,9 +116,29 @@ module.exports = function (app) {
   });
 
   app.get('/api/countries', function (req, res) {
-    Controllers.countries.getDisplayCountries (function (err, result) {
+    var hot = req.query.hot;
+
+    if (hot == 1) {
+      Controllers.countries.getHotCountries (function (err, result) {
+        if (err) {
+          return res.json({err: err});
+        }
+        res.json(result);
+      });
+    } else {
+      Controllers.countries.getDisplayCountries (function (err, result) {
+        if (err) {
+          return res.json({err: err});
+        }
+        res.json(result);
+      });
+    }
+  });
+
+  app.get('/api/catas', function (req, res) {
+    Controllers.catas.getDisplayCatas (function (err, result) {
       if (err) {
-        return res.json({err: err});
+        console.log(err);
       }
       res.json(result);
     });

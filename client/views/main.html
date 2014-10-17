@@ -1,31 +1,26 @@
-<div class="row top-free-20" style="text-align:center;">
-  <div class="col-sm-9" ng-controller="MainCtrl">
-    <div class="hot-recom">
-      <h4>热供品牌<strong style="color:red;">hot!</strong></h4>
-    </div>
-    <div class="wrap" >
-      <div class="panel hot-item" ng-click="showSupplies(hot.productId)" ng-repeat="hot in hots">
-        <div class="panel-body">
-          <img class="img-thumbnail product-img" ng-mouseover="emphasisHots(this)" src="{{hot.imagePath}}">
-        </div>
-        <div class="panel-heading">
-          <h3 class="panel-title"><strong>{{hot.name}}<strong></h3>
+<!--<div class="row top-free-20" style="text-align:center;">-->
+  <div class="" ng-controller="MainCtrl">
+    <div class="well text-center brand-well" >
+      <div class="container main-brand" >
+        <a class="brand-item text-center" ng-click="productLine(cata)" ng-repeat="cata in catas">
+          <img class="img-circle circle-brand" alt="200*200" src="/images/{{cata.images}}">
+          <p>{{cata.name}}</p>
+        </a>
+        <div class="search-box">
+          <input type="text">
+          <button class="btn btn-sm btn-default">查找产品</button>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="col-sm-3" ng-controller="ContactCtrl">
-    <div class="list-group">
-      <div class="list-group-item list-head">
-        <span>业务联系</span>
-      </div>
-      <div class="wrap" ng-repeat="contact in contacts">
-        <div class="list-group-item">
-          <span>{{contact.name}}：{{contact.value}}</span>
+      <div class="container main-products">
+        <div class="hide-block" id="m-p-line">
+          <a class="p-b-icon text-center" ng-repeat="cataProd in cataProds">
+            <img class="img-thumbnail p-b-img" src="{{cataProd.imagePath}}">
+            <br>
+            <span>{{cataProd.name}}</span>
+          </a>
         </div>
       </div>
     </div>
   </div>
-</div>
 <script type="text/javascript">
 </script>

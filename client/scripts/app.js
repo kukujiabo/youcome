@@ -59,7 +59,7 @@ function AnimaCtrl ($scope, $http) {
     }
 
     $("#" + art._id).addClass('active');
-    $("#brand-pic").css("background-image", "url(" + art.imgPath +  ")");
+    $("#brand-pic").attr("src", art.imgPath);
     $("#brand-desc").html(art.desc);
     $scope.beforeOver = $("#" + art._id);
   }
