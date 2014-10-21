@@ -22,6 +22,10 @@ a:hover {
   height: 100px;
 }
 
+li {
+  list-style-type: none;
+}
+
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
@@ -133,6 +137,8 @@ div.supplies-item {
 
 .country-content {
   text-align: left;
+  height: auto;
+  overflow: auto;
 }
 
 .country-desc {
@@ -171,6 +177,40 @@ div.supplies-item {
   margin: 5px 10px;
   float: left;
   color: #999;
+}
+
+#annoucement {
+  float: left;
+  width: 200px;
+  height: 200px;
+}
+
+.notice-wrap {
+  padding: 30px 5px;
+}
+
+.notice-content {
+  min-height: 200px;
+}
+
+.supply-list-itm {
+  float: left;
+  background-color: #333;
+  width: 45%;
+  height: 210px;
+  margin: 1%;
+  border-radius: 5px;
+}
+
+.supply-img {
+  width: 160px;
+  height: 160px; 
+  margin: 10px;
+}
+
+.supply-content {
+  color: white;
+  margin: 10px;
 }
 
 /* Custom page footer */
@@ -238,7 +278,7 @@ div.side-padding-10 {
 }
 
 .index-nav {
-  width: 950px;
+  width: 1000px;
 }
 
 .top-free-30 {
@@ -276,7 +316,13 @@ div.side-padding-10 {
   height: 90px;
 }
 
+.p-b-img:hover {
+  width: 95px;
+  height: 95px;
+}
+
 .p-b-icon {
+  display: inline;
   float: left;
   margin: 5px;
   color: #666;
@@ -299,11 +345,12 @@ div.side-padding-10 {
   margin: 20px 20px;
 }
 
-.circle-brand:hover {
+.circle-brand-over {
   width: 220px;
   height: 220px;
   padding: 5px;
   background-color: #000;
+  margin: 20px;
 }
 
 .brand-item {
@@ -316,7 +363,6 @@ div.side-padding-10 {
 
 .brand-item:hover {
   color: #666;
-
 }
 
 .brand-well {
@@ -325,9 +371,9 @@ div.side-padding-10 {
 }
 
 .search-box {
-  float: left;
-  width: 300px;
-  margin: 5px 0;
+  display: inline;
+  float: right;
+  width: 250px;
 }
 
 .main-products {
@@ -335,11 +381,104 @@ div.side-padding-10 {
 }
 
 .main-products {
-  max-width: 1000px;
+  max-width: 800px;
 }
 
 .content-center {
   min-height: 300px;
+}
+
+.cata-nav {
+  margin: 0px 30px;
+}
+
+#p-search {
+  width:160px;
+  height: 30px;
+}
+
+#b-search {
+  display: inline;
+  float: left;
+}
+
+.f-search {
+  float: right;
+}
+
+.h-n-itm {
+  float: left;
+  list-style-type: none;
+  margin: 0px 5px;
+  color: #999;
+}
+
+.h-n-i-selected {
+  float:left;
+  list-style-type: none;
+  font-size: 16px;
+  color: #333;
+}
+
+.h-n-i-selected:hover {
+  cursor: pointer;
+}
+
+.cata-content {
+  margin: 0px 30px;
+}
+
+.h-n-itm:hover {
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+}
+
+.tiny-flag {
+  width: 20px;
+  margin: 0px 3px;
+}
+
+.p-flag {
+  width: 20px;
+  height: 20px;
+}
+
+.cata-valign-nav {
+  margin-left: 15px;
+}
+
+.product-details {
+  margin: 10px 0px;
+}
+
+.full-nav {
+  width: 100%;
+}
+
+.horizal-nav {
+  float: left;
+  margin: 0px 30px;
+}
+
+.left-block {
+  float: left;
+}
+
+.product-info {
+  width: 1050px;
+  min-height: 200px;
+  margin: 5px 30px;
+}
+
+.u-line {
+  display: block;
+}
+
+.u-l-itm {
+  text-align: center;
+  margin: 0px 10px;
+  cursor: pointer;
 }
 
 /* Main marketing message and sign up button */

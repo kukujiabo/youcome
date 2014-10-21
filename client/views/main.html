@@ -1,26 +1,38 @@
-<!--<div class="row top-free-20" style="text-align:center;">-->
-  <div class="" ng-controller="MainCtrl">
-    <div class="well text-center brand-well" >
-      <div class="container main-brand" >
-        <a class="brand-item text-center" ng-click="productLine(cata)" ng-repeat="cata in catas">
-          <img class="img-circle circle-brand" alt="200*200" src="/images/{{cata.images}}">
-          <p>{{cata.name}}</p>
-        </a>
-        <div class="search-box">
-          <input type="text">
-          <button class="btn btn-sm btn-default">查找产品</button>
+<div class="" ng-controller="MainCtrl">
+  <div class="well text-center brand-well" >
+    <div class="row">
+      <div class="col-sm-9">
+        <div id="brand-wrap" ng-mouseleave="brandLeave()">
+          <div class="container main-brand" >
+            <a class="brand-item text-center" href="/products?cata={{cata._id}}" ng-mouseover="brandOver(cata)" ng-repeat="cata in catas">
+              <img class="img-circle circle-brand" id="ic-{{cata._id}}" src="/images/{{cata.images}}">
+              <p>{{cata.name}}</p>
+            </a>
+          </div>
+          <div class="container main-products">
+            <div class="hide-block" id="m-p-line">
+              <a class="p-b-icon text-center" ng-repeat="cataProd in cataProds">
+                <img class="img-thumbnail p-b-img" src="{{cataProd.imagePath}}">
+                <br>
+                <span>{{cataProd.name}}</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="container main-products">
-        <div class="hide-block" id="m-p-line">
-          <a class="p-b-icon text-center" ng-repeat="cataProd in cataProds">
-            <img class="img-thumbnail p-b-img" src="{{cataProd.imagePath}}">
-            <br>
-            <span>{{cataProd.name}}</span>
-          </a>
+      <div class="col-sm-3">
+        <div class="wrap notice-wrap">
+          <div class="panel panel-default" id="">
+            <div class="panel-heading">
+              <h3 class="panel-title">特惠公告</h3>
+            </div>
+            <div class="panel-body notice-content">
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 <script type="text/javascript">
 </script>
