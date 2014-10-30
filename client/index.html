@@ -19,7 +19,7 @@
      <div class="nav-self">
        <div class="container index-nav">
          <div class="nav-collapse">
-           <ul class="nav navbar-nav">
+           <ul class="nav navbar-nav" ng-controller="MenuCtrl">
              <li>
                <a class="nav-family" href="/">首页</a>
              </li>
@@ -27,10 +27,10 @@
                <a class="nav-family" href="/products">产品展示</a>
              </li>
              <li>
-               <a class="nav-family" href="/flagship">旗舰体验</a>
+               <a class="nav-family" href="/flagship">店铺体验</a>
              </li>
              <li>
-               <a class="nav-family" href="/arts">文化小站</a>
+               <a class="nav-family" href="/arts">啤酒文化</a>
              </li>
              <li>
                <a class="nav-family" href="/about">公司介绍</a>
@@ -39,11 +39,11 @@
                <a class="nav-family" href="/contact">业务联系</a>
              </li>
              <li>
-             <a class="nav-family" href="/contact">阿里商铺<img style="width:20px; height:18px;" src="/images/arrow-right.png"></a>
+             <a class="nav-family" href="{{ali}}" target="_Blank">阿里商铺<img style="width:20px; height:18px;" src="/images/arrow-right.png"></a>
              </li>
            </ul>
-           <form class="navbar-form nav-right f-search">
-             <input class="form-control" id="p-search" type="text">
+           <form class="navbar-form nav-right f-search" ng-controller="IndexCtrl">
+             <input class="form-control" id="p-search" type="text" ng-model="searchText">
              <button class="btn btn-default btn-sm">找产品</button>
            </form>
          </div>
@@ -91,11 +91,13 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="/scripts/app.js"></script>
+    <script src="/scripts/common.js"></script>
     <script src="/scripts/controllers/main.js"></script>
     <script src="/scripts/controllers/contact.js"></script>
     <script src="/scripts/controllers/about.js"></script>
     <script src="/scripts/controllers/products.js"></script>
-    <script src="/scripts/common.js"></script>
+    <script src="/scripts/controllers/index.js"></script>
+    <script src="/scripts/controllers/menu.js"></script>
     <!-- endbuild -->
 </body>
 </html>

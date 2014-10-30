@@ -17,7 +17,7 @@
     <div class="container product-info" id="product-list">
       <div class="wrap product-line" id="cata-{{cata._id}}" ng-repeat="cata in catas">
         <ul class="u-line">
-          <li class="u-l-itm left-block" ng-click="selectedProduct(product)" id="d-{{product._id}}" ng-repeat="product in cataProducts[cata._id]">
+          <li class='u-l-itm left-block' ng-click="choseProduct(product)" id="d-{{product._id}}" ng-repeat="product in cataProducts[cata._id]">
             <img class="img-thumbnail p-b-img" src="{{product.imagePath}}">
             <p>{{product.name}}</p>
           </li>
@@ -30,7 +30,8 @@
       <div class="well">
         <div class="wrap row">
           <div class="col-sm-3">
-            <img class="img-thumbnail product-img" id="s-prod-img" src="{{cuProd.images}}">
+            <a class="m-back">-</a>
+            <img class="img-thumbnail product-img" id="s-prod-img" src="{{cuProd.imagePath}}">
           </div>
           <div class="col-sm-9">
             <h4 class="page-header">{{cuProd.name}}</h4>
@@ -59,77 +60,10 @@
               </div>
             </div>
           </li>
-        </ul> 
+        </ul>
         <div style="clear:both"></div>
       </div>
       <div style="clear:both"></div>
     </div>
-    <!--<div class="col-sm-3">-->
-      <!--<div class="well">-->
-        <!--<div class="list-group-item text-center" style="background-color: #333; color: #fff;"><strong>经营产品</strong></div>-->
-        <!--<ul class="list-group country-block">-->
-          <!--<li class="list-group-item country-item text-center" id="c-{{country._id}}" ng-repeat="country in countries">-->
-            <!--<div ng-click="getProductsByCountry(country)">{{country.name}}</div>-->
-            <!--<ul class="list-group product-block hide-block" id="p-{{country._id}}">-->
-              <!--<br>-->
-              <!--<div class="wrap product-wrap" id="p-d-{{country._id}}" >-->
-                <!--<li class="list-group-item product-list" id="{{product._id}}" ng-click="showProducts(this, product)" ng-repeat="product in products[country._id]">{{product.name}}</li>-->
-              <!--</div>-->
-            <!--</ul>-->
-          <!--</li>-->
-        <!--</ul>-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--<div class="col-sm-9">-->
-      <!--<div class="">-->
-      <!--</div>-->
-      <!--<div class="well flag-wall hide-block">-->
-        <!--<a class="flag-nap" ng-repeat="country in countries">-->
-          <!--<img class="img-thumbnail" style="width: 120px; height: 100px" src="/images/flag/{{country.img}}">-->
-        <!--</a>-->
-      <!--</div>-->
-      <!--<div class="well countries-wrap" id="c-w-{{country._id}}" ng-repeat="country in countries">-->
-        <!--<div class="row countries-detail">-->
-          <!--<div class="col-sm-3">-->
-            <!--<p>-->
-              <!--<img class="img-thumbnail" style="width: 120px;" src="/images/flag/{{country.img}}">-->
-            <!--</p>-->
-            <!--<p>{{country.name}}</p>-->
-          <!--</div>-->
-          <!--<div class="col-sm-9 country-content">-->
-            <!--<span class="hide-block country-desc" id="s-desc-{{country._id}}">{{country.desc}}</span>-->
-            <!--<p class="prod-tiny-flag" id="p-c-{{country._id}}">-->
-              <!--<a class="p-b-icon text-center" ng-click="showProducts(this, product)" ng-repeat="product in products[country._id]">-->
-                <!--<img class="img-thumbnail p-b-img" src="{{product.imagePath}}">-->
-                <!--<br>-->
-                <!--<span>{{product.name}}</span>-->
-              <!--</a>-->
-            <!--</p>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="wrap hide-block" id="supply-block">-->
-        <!--<div class="well" id="supply-brand">-->
-          <!--<div class="row">-->
-            <!--<div class="col-sm-3">-->
-              <!--<img id="product-brand-image" class="img-thumbnail product-img" style="width: 170px; height: 170px;" src="">-->
-            <!--</div>-->
-            <!--<div class="col-sm-9">-->
-              <!--<h3 id="product-brand-title"></h3>-->
-              <!--<p id="product-brand-desc"></p>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="supplies_list" ng-repeat="supply in supplies">-->
-          <!--<div class="row" ng-click="supplySelect(supply)">-->
-            <!--<div class="col-sm-3 supplies-item">-->
-              <!--<img class="img-thumbnail" style="width: 160px; height: 160px;" src="/images/supply/{{supply._id}}.jpg">-->
-            <!--</div>-->
-            <!--<div class="col-sm-8 well">-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
   </div>
 </div>

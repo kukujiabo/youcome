@@ -197,14 +197,15 @@ div.supplies-item {
   float: left;
   background-color: #333;
   width: 45%;
-  height: 210px;
+  height: auto;
+  padding: 3px 0px;
   margin: 1%;
   border-radius: 5px;
 }
 
 .supply-img {
   width: 160px;
-  height: 160px; 
+  height: 160px;
   margin: 10px;
 }
 
@@ -479,6 +480,13 @@ div.side-padding-10 {
   text-align: center;
   margin: 0px 10px;
   cursor: pointer;
+}
+
+.m-back {
+  display: block
+  background-color: #666;
+  width: 10px;
+  height: 20px;
 }
 
 /* Main marketing message and sign up button */

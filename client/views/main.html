@@ -11,7 +11,7 @@
           </div>
           <div class="container main-products">
             <div class="hide-block" id="m-p-line">
-              <a class="p-b-icon text-center" ng-repeat="cataProd in cataProds">
+              <a class="p-b-icon text-center" href="/products?product={{cataProd._id}}" ng-repeat="cataProd in cataProds">
                 <img class="img-thumbnail p-b-img" src="{{cataProd.imagePath}}">
                 <br>
                 <span>{{cataProd.name}}</span>

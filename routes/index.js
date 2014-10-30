@@ -135,6 +135,15 @@ module.exports = function (app) {
     }
   });
 
+  app.get('/api/ali', function (req, res) {
+    Controllers.ali.getDisplayAli (function (err, result) {
+      if (err) {
+        console.log(err);
+      }
+      res.json(result);
+    });
+  });
+
   app.get('/api/catas', function (req, res) {
     Controllers.catas.getDisplayCatas (function (err, result) {
       if (err) {
