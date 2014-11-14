@@ -28,11 +28,11 @@ angular
       templateUrl: "views/contact.html",
       controller: "ContactCtrl"
     })
-    .when("/arts", {
+    .when("/culture", {
       templateUrl: "views/arts.html",
       controller: "ArtsCtrl"
     })
-    .when("/flagship", {
+    .when("/shops", {
       templateUrl: "views/flagship.html",
       controller: "FlagshipCtrl"
     })
@@ -40,43 +40,3 @@ angular
       redirectTo: "/"
     });
 });
-
-function AnimaCtrl ($scope, $http) {
-  $scope.arts = [];
-  $scope.beforeOver = undefined;
-  $http({
-    url: "/api/arts",
-    method: "GET"
-  }).success(function (arts) {
-    $scope.arts = arts;
-  }).error(function (err) {
-    console.log(err);
-  });
-
-  $scope.showBrandPicture = function (that, art) {
-    if ($scope.beforeOver != undefined) {
-      $scope.beforeOver.removeClass("active");
-    }
-
-    $("#" + art._id).addClass('active');
-    $("#brand-pic").attr("src", art.imgPath);
-    $("#brand-desc").html(art.desc);
-    $scope.beforeOver = $("#" + art._id);
-  }
-}
-
-angular.module("yocomeApp")
-.controller("FlagshipCtrl", function ($scope, $http) {
-  $scope.displayLarge = function (that) {
-  };
-
-  $http({
-    "url": "/api/flagship",
-    "method": "GET"
-  }).success(function (result) {
-    $scope.flags = result;
-  }).error(function (err) {
-    console.log(err);
-  });
-});
-

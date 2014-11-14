@@ -1,7 +1,7 @@
-<div class="" ng-controller="MainCtrl">
+<div class="">
   <div class="well text-center brand-well" >
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-sm-9" ng-controller="MainCtrl">
         <div id="brand-wrap" ng-mouseleave="brandLeave()">
           <div class="container main-brand" >
             <a class="brand-item text-center" href="/products?cata={{cata._id}}" ng-mouseover="brandOver(cata)" ng-repeat="cata in catas">
@@ -20,13 +20,14 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-3" ng-controller="AnnouceCtrl">
         <div class="wrap notice-wrap">
           <div class="panel panel-default" id="">
             <div class="panel-heading">
               <h3 class="panel-title">特惠公告</h3>
             </div>
             <div class="panel-body notice-content">
+              {{announcement}}
             </div>
           </div>
         </div>

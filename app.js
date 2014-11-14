@@ -12,6 +12,7 @@ app.use(logger('dev'));
 app.use(express.static(__dirname + "/client"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use(bodyParser({ keepExtensions: true, uploadDir: './client/images' }));
 
 app.listen(app.get("port"), function () {
   console.log("listen at " + app.get("port"));

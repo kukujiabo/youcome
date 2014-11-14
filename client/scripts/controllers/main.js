@@ -37,14 +37,14 @@ angular.module("yocomeApp")
     var brand = $('#m-p-line');
 
     var img = $('#ic-' + cata._id);
-    
+
     $('.circle-brand-over').removeClass('circle-brand-over').addClass('circle-brand');
-    
+
     img.removeClass('circle-brand').addClass('circle-brand-over');
 
     if ($scope.products[cata._id] == undefined) {
       productsList($scope, $http, function () {
-        $scope.productLine(cata); 
+        $scope.productLine(cata);
       });
       return;
     } else {
@@ -54,24 +54,6 @@ angular.module("yocomeApp")
       }
     }
 
-    //if ($scope.cuCata == cata._id) {
-      //brand.toggle('normal');
-      //return;
-    //} else {
-      //$scope.cuCata = cata._id;
-      //if ($scope.products[cata._id] == undefined) {
-        //productsList($scope, $http, function () {
-        //});
-        //return;
-      //}
-
-      //if (brand.css('display') == 'none') {
-        //$scope.cataProds = $scope.products[cata._id];
-        //brand.toggle('normal');
-      //} else {
-        //$scope.cataProds = $scope.products[$scope.cuCata];
-      //}
-    //}
   };
 });
 

@@ -4,6 +4,7 @@
 /* Everything but the jumbotron gets side spacing for mobile first views */
 body {
   background-color: #003c9d;
+  height: 100%;
 }
 
 .header,
@@ -30,12 +31,17 @@ li {
 .header {
   border-bottom: 1px solid #e5e5e5;
 }
+
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
   padding-bottom: 19px;
+}
+
+.index-middle {
+  padding: 0px 10px;
 }
 
 .brand-container {
@@ -57,6 +63,42 @@ li {
   width: 100%;
   height: 60px;
   background-color: #eee;
+}
+
+.shop-thumbnails {
+  width: 255px;
+  margin: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.i-w-wrap {
+  padding:5px;
+  background-color: #aaa;
+}
+
+.i-w-wrap:hover {
+  background-color: white;
+}
+
+#shop-img-slide {
+  height: 350px;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: #aaa;
+}
+
+#shop-large {
+  width: 100%;
+  padding: 0px 10px;
+}
+
+#s-l-img {
+  width: 620px;
+}
+
+#shop-img-wrap {
+  padding: 15px 0px;
 }
 
 .bk-img {
@@ -118,7 +160,6 @@ div.supplies-item {
 }
 
 .art-container {
-  margin-top: 30px;
 }
 
 .list-head {
@@ -168,8 +209,8 @@ div.supplies-item {
   color: #aaa;
 }
 
-.nav-family:hover {
-  color: #333;
+.nav-family-selected {
+  color: #999;
   font-size: 18px;
 }
 
@@ -185,8 +226,15 @@ div.supplies-item {
   height: 200px;
 }
 
+#image-wall {
+  padding: 0px;
+  width:100%;
+  display:block;
+}
+
 .notice-wrap {
-  padding: 30px 5px;
+  padding: 10px 5px;
+  width: 100%;
 }
 
 .notice-content {
@@ -203,6 +251,11 @@ div.supplies-item {
   border-radius: 5px;
 }
 
+.form-control {
+  color: #999;
+  font-size: 14px;
+}
+
 .supply-img {
   width: 160px;
   height: 160px;
@@ -212,6 +265,40 @@ div.supplies-item {
 .supply-content {
   color: white;
   margin: 10px;
+}
+
+.seperator {
+  border-color: #ddd;
+  margin:10px 0px  20px 0px;;
+}
+
+.el-middle {
+  vertical-align: middle;
+}
+
+.art-list {
+  width: 750px;
+  height: 200px;
+  background-color: #fff;
+  margin: 0px 10px 20px 10px;
+  box-shadow: 0 1px 2px #ccc;
+  overflow: hidden;
+}
+
+.art-catalog {
+  width: 100%;
+  background-color: #fff;
+  min-height: 100px;
+  box-shadow: 0 1px 2px #ccc;
+  overflow: hidden;
+}
+
+.art-wrap {
+  padding: 0px 20px 0px 40px;
+}
+
+.catalog-sidebar {
+
 }
 
 /* Custom page footer */
@@ -250,15 +337,11 @@ div.side-padding-10 {
 }
 
 .back-wall {
-  position: relative;
-  margin-bottom:50px;
-  top:50px;
-  left: 80px;
-  padding: 10px 20px;
-  width: 1120px;
-  min-height: 580px;
   background-color: #eee;
-  border-radius: 5px;
+  height: 100%;
+  position: relative;
+  padding: 10px 20px;
+  /*border-radius: 5px;*/
 }
 
 .yo-background {
@@ -290,11 +373,13 @@ div.side-padding-10 {
   position: relative;
   display: block;
   background-color: #eee;
-  border-radius: 3px;
   width: 100%;
   padding: 10px;
   text-align: center;
-  bottom: 5px;
+}
+
+.pad-5 {
+  padding:10px;
 }
 
 .nor-display {
@@ -313,13 +398,13 @@ div.side-padding-10 {
 }
 
 .p-b-img {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
 }
 
 .p-b-img:hover {
-  width: 95px;
-  height: 95px;
+  width: 85px;
+  height: 85px;
 }
 
 .p-b-icon {
@@ -339,17 +424,17 @@ div.side-padding-10 {
 }
 
 .circle-brand {
-  width: 200px;
-  height: 200px;
+  width: 190px;
+  height: 190px;
   padding: 3px;
   background-color: #999;
   margin: 20px 20px;
 }
 
 .circle-brand-over {
-  width: 220px;
-  height: 220px;
-  padding: 5px;
+  width: 200px;
+  height: 200px;
+  padding: 3px;
   background-color: #000;
   margin: 20px;
 }
@@ -368,8 +453,9 @@ div.side-padding-10 {
 
 .brand-well {
   position: relative;
-  min-height: 320px;
+  /*min-height: 320px;*/
 }
+
 
 .search-box {
   display: inline;
@@ -401,6 +487,14 @@ div.side-padding-10 {
 #b-search {
   display: inline;
   float: left;
+}
+
+#supply-info {
+  padding: 0px 30px;
+}
+
+#shop-detail {
+
 }
 
 .f-search {
@@ -467,9 +561,7 @@ div.side-padding-10 {
 }
 
 .product-info {
-  width: 1050px;
-  min-height: 200px;
-  margin: 5px 30px;
+  width: 100%;
 }
 
 .u-line {
@@ -487,6 +579,12 @@ div.side-padding-10 {
   background-color: #666;
   width: 10px;
   height: 20px;
+}
+
+#index-wrap {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
 }
 
 /* Main marketing message and sign up button */
@@ -575,4 +673,21 @@ div.side-padding-10 {
 }
 
 
+/*** placeholder ***/
+
+::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+:-moz-placeholder {
+  color: #ccc;
+}
+
+::-moz-placeholder {
+  color: #ccc;
+}
+
+:-ms-input-placeholder {
+  color: #ccc;
+}
 

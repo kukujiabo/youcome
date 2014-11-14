@@ -4,5 +4,6 @@
 //{ "_id" : ObjectId("541ab397a7ed5f5cf4a57488"), "name" : "麦汀格系列", "imagePath" : "/images/product/Maitingge.jpg", "desc" : "", "content" : "", "active" : 1 }
 //{ "_id" : ObjectId("541ab397a7ed5f5cf4a57489"), "name" : "麦汀格黑麦汁", "imagePath" : "/images/product/MaitinggeHeimaizi.jpg", "desc" : "", "content" : "", "active" : 1 }
  //} } } } }
-db.products.update({"_id": ObjectId('543e4c62efb39948d5ab2f73')},
-    {$set: {desc: '什么是从棕啤酒？棕啤酒略微酸甜，酒精度含量5度左右，起源于比利时的佛兰德斯地区，又称为”佛兰德斯布朗“啤酒。它的特点是上层发酵，酒液呈棕红色。早起酿造需经过一年或更长时间的熟化后尚与尚未熟化的啤酒混合。（介于黑啤和白啤之间的类型）'}});
+db.products.update(
+{"_id": ObjectId('54434d1342dffe76d767cf83')},
+{$set: {desc: '凯撒西蒙起源语1522年德国巴伐利亚州，纽伦堡市。巴伐利亚小麦啤酒香味独特，具有较高的蛋白质含量，和良好的泡持力。小麦黑啤酒有非常细腻且浑厚的白色泡沫层，酒液浑浊呈琥珀色，入口口味浑厚，沙口感适中；小麦白啤泡沫稠密细腻，高比例的小麦麦芽及蛋白质含量使其口感圆润，并具有浓烈的小麦香气。'}});

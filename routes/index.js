@@ -153,9 +153,36 @@ module.exports = function (app) {
     });
   });
 
-  app.get(/.*/, function (req, res) {
-    res.sendfile("./client/index.html");
+  app.get('/api/shops', function (req, res) {
+    Controllers.shops.getDisplayShops(function (err, result) {
+      if (err) {
+        console.log(err);
+      }
+      res.json(result);
+    });
   });
 
+  app.get('/api/annoucements', function (req, res) {
+    Controllers.annoucements.getDisplayAnnoucement(function (err, result) {
+      if (err) {
+        console.log(err);
+      }
+      res.json(result);
+    });
+  });
+
+  app.get('/api/menus', function (req, res) {
+    Controllers.menus.getDisplayMenus(function (err, result) {
+      if (err) {
+        console.log(err);
+      }
+      res.json(result);
+    })
+  });
+
+  app.get(/.*/, function (req, res) {
+    console.log(req.files)
+    res.sendfile("./client/index.html");
+  });
 
 };

@@ -22,4 +22,10 @@ Controllers.catas = require('./catagories');
 
 Controllers.ali = require('./alis');
 
+Controllers.annoucements = require('./announcements');
+
+Controllers.shops = require('./shops');
+
+Controllers.menus = require('./menus');
+
 module.exports = Controllers;
