@@ -101,6 +101,14 @@ li {
   padding: 15px 0px;
 }
 
+#b-map {
+  width: 950px;
+  height: 360px;
+  background-color: #aaa;
+  margin: 10px;
+  border-radius: 5px;
+}
+
 .bk-img {
   height:100%;
   filter:alpha(Opacity=30);
@@ -239,6 +247,7 @@ div.supplies-item {
 
 .notice-content {
   min-height: 200px;
+  box-shadow: 0 1px 2px #ccc;
 }
 
 .supply-list-itm {
@@ -280,7 +289,7 @@ div.supplies-item {
   width: 750px;
   height: 200px;
   background-color: #fff;
-  margin: 0px 10px 20px 10px;
+  margin: 0px 10px 20px 5px;
   box-shadow: 0 1px 2px #ccc;
   overflow: hidden;
 }
@@ -294,12 +303,39 @@ div.supplies-item {
 }
 
 .art-wrap {
-  padding: 0px 20px 0px 40px;
+  padding: 0px 5px;
 }
 
 .catalog-sidebar {
 
 }
+
+.general-wrapper {
+  padding: 10px 15px;
+}
+
+.shop-panel {
+  padding: 20px 10px 5px 10px;
+  border-radius: 5px;
+}
+
+.shop-panel:hover {
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.shop-title {
+  margin-top: 20px;
+  display: inline;
+}
+
+.shop-thumbnail {
+  width: 150px;
+  height: 150px;
+  padding: 3px;
+  background-color: #aaa;
+}
+
 
 /* Custom page footer */
 .footer {
@@ -336,11 +372,12 @@ div.side-padding-10 {
   padding-right: 10px;
 }
 
-.back-wall {
+#back-wall {
   background-color: #eee;
   height: 100%;
   position: relative;
   padding: 10px 20px;
+  min-height: 640px;
   /*border-radius: 5px;*/
 }
 

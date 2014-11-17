@@ -1,26 +1,32 @@
 <div class="wrap">
   <div class="well shop-brand" id="shop-carboard" ng-controller="carouselCtrl">
-    <!--<carousel interval="shopInterval">-->
-      <!--<slide ng-repeat="shop in shops" active="slide.active">-->
-        <!--<img ng-src="/images/flagship/{{shop.photos[0]}}" style="margin:auto">-->
-        <!--<div class="carousel-caption">-->
-          <!--<h4></h4>-->
-          <!--<p>{{shop.name}}</p>-->
-        <!--</div>-->
-      <!--</slide>-->
-    <!--</carousel>-->
-    <!--<hr class="header-seperator top-free-20">-->
-    <!--<div class="row top-free-20" ng-repeat="shopGrp in shopGrps">-->
-      <!--<div class="col-lg-4 text-center" ng-repeat="shop in shopGrp">-->
-        <!--<img class="img-circle" src="" alt="Generic placeholder image" style="width: 140px; height: 140px;">-->
-        <!--<h3>{{shop.name}}</h3>-->
-        <!--<p class="pad-5">地址：{{shop.address}}</p>-->
-      <!--</div>-->
-    <!--</div>-->
-    <div class="wrap" id="shop-detail">
-      <h2 class="page-header">{{currentShop.name}}</h2>
+    <div class="wrap" id="shop-display">
+      <carousel interval="shopInterval">
+        <slide ng-repeat="shop in shops" active="slide.active">
+          <img ng-src="/images/flagship/{{shop.photos[0]}}" style="margin:auto">
+          <div class="carousel-caption">
+            <h4></h4>
+            <p>{{shop.name}}</p>
+          </div>
+        </slide>
+      </carousel>
+      <hr class="header-seperator top-free-20">
+      <div class="row general-wrapper" ng-repeat="shopGrp in shopGrps">
+        <div class="col-lg-4 text-center shop-panel" id="s-thumb-{{shop._id}}" ng-click="shopDetails(shop)" ng-repeat="shop in shopGrp">
+          <img class="img-circle shop-thumbnail" src="{{shop.image_dir}}{{shop.thumbnail}}" alt="Generic placeholder image">
+          <h3>{{shop.name}}</h3>
+          <p class="pad-5">地址：{{shop.address}}</p>
+        </div>
+        <div style="clear:both"></div>
+      </div>
+    </div>
+    <div class="wrap hide-block" id="shop-detail">
+      <h2 class="shop-title">{{currentShop.name}}</h2><a ng-click="shopBrand()">(其他店铺)</a>
+      <hr class="seperator">
       <div>
-        <span>地址：{{currentShop.address}}<a>查看地图</a></span>
+        <span>地址：{{currentShop.address}}<a id="map-trigger" ng-click="showMap()">查看地图</a></span>
+      </div>
+      <div class="hide-block" id="b-map">
       </div>
       <div class="row" id="shop-img-wrap">
         <div class="col-sm-8">
