@@ -1,222 +1,276 @@
 'use strict';
 
-(function () {
+(function (window) {
 angular.module("yocomeApp")
 .controller("ProductsCtrl", function ($scope ,$http, $routeParams) {
-  $scope.products = {}; //产品
-  $scope.countries = []; //国家
-  $scope.cblocks = [];
+  var youcome = window.youcome;
 
-  countryList($scope, $http);
+  youcome.Events.listen('initSelected', initSelected);
 
-  $scope.showProducts = function (that, product) {
-    var descBlocks = $('.country-desc');
-    var did = 'c-w-' + product.country;
+  /*
+   *商品种类
+   */
+  $scope.catas = [];
 
-    descBlocks.each(function () {
-      var that = $(this);
-      if (that.attr('id') != did) {
-        if (that.css('display') != 'none') {
-          that.slideToggle('normal');
-        }
-      }
-    });
+  /*
+   *所有品牌
+   */
+  $scope.oriProducts = [];
 
-    $('#supply-block').show();
-    $('#product-brand-image').attr('src', product.imagePath);
-    $('#product-brand-title').html(product.name);
-    $('#product-brand-desc').html(product.desc);
-    suppliesDisplay($scope, $http, product._id);
-  };
+  /*
+   *分类品牌
+   */
+  $scope.cataProducts = {};
 
-  $scope.getProductsByCountry = function (country) {
-    $scope.cblocks = $('.countries-wrap');
-    $scope.descBlocks = $('.country-desc');
-    $scope.subMenus = $('.product-block');
+  /*
+   *所有原产地
+   */
+  $scope.countries = [];
 
-    var cid = country._id;
-    var infoPrefix = 'c-w-';
-    var menuPrefix = 'c-';
-    var subMenuPrefix = 'p-';
-    var descPrefix= 's-desc-';
-    var infoBlock = $('#' + infoPrefix + cid);
-    var menuBlock = $('#' + menuPrefix + cid);
-    var subMenuBlock = $('#' + subMenuPrefix + cid);
-    var descBlock = $('#' + descPrefix + cid);
-    var suppliesBlock = $('#supply-block');
+  /*
+   *商品
+   */
+  $scope.supplies = [];
 
-    //若$scope.products 没有设置，则先设置其值
-    if ($scope.products == undefined || $scope.products.length < 1) {
-      productsList($scope, $http)
-    }
+  /*
+   *根据品牌分类供应品
+   */
+  $scope.prodSupplies = {};
 
-    if (suppliesBlock.css('display') != 'none') {
-      suppliesBlock.slideToggle('fast');
-    }
+  /*
+   *当前选中的国家
+   */
+  $scope.selectedCountry = null;
 
-    //当子菜单在显示状态下时，收起子菜单.
-    if ('none' != subMenuBlock.css('display')) {
-      //收起文字描述
-      if (descBlock.css('display') != 'none') {
-        descBlock.slideToggle('normal');
-      }
+  /*
+   *当前选中的品种
+   */
+  $scope.selectedCata = undefined;
 
-      $scope.cblocks.each(function () {
-        //商品条目收起完毕后显示国家信息.
-        if ($(this).css('display') == 'none') {
-          $(this).slideToggle('fast');
-        }
+  /*
+   *当前选中的商品
+   */
+  $scope.selectedSupply = {};
+
+  /*
+   *当前展示的商品列表
+   */
+  $scope.cuSupplyList = [];
+
+  /*
+   *当前选中的产品
+   */
+  $scope.cuProd = undefined;
+
+
+  /*
+   *选择产品
+   */
+  $scope.choseProduct = function (product, init) {
+    $scope.cuProd = product;
+    $scope.cuSupplyList = $scope.prodSupplies[product._id];
+    if (init == undefined) {
+      $('#product-list').toggle('normal', function () {
+        $('#supply-info').toggle('normal');
       });
-
     } else {
-      //收起非该主菜单下的其他子菜单
-      $scope.subMenus.each(function () {
-        var that = $(this);
-        if (that.attr('id') == subMenuBlock.attr('id')) {
-          return;
-        } else {
-          if (that.css('display') != 'none') {
-            that.slideToggle('normal');
-          }
-        }
-      });
+      $('#product-list').hide();
+      $('#supply-info').show();
+    }
+  }
 
-      //显示国家描述
-      if (infoBlock.css('display') == 'none') {
-        infoBlock.slideToggle('normal');
-      }
 
-      //显示文字描述
-      if (descBlock.css('display') == 'none') {
-        descBlock.slideToggle('normal');
-      }
+  /*
+   *选择原产地
+   */
+  $scope.choseCountry = function (country) {
+    hideSupplies();
 
-      //收起其他国家的描述
-      $scope.cblocks.each(function () {
-        var that = $(this);
-        if (that.attr('id') == infoBlock.attr('id')) {
-          return;
-        } else {
-          if (that.css('display') != 'none') {
-            that.slideToggle('normal');
-          }
-        }
-      });
+    var cuProd,
+      i = 0,
+      cid = country._id,
+      that = $('#h-n-' + cid),
+      cata = $scope.selectedCata,
+      preObj = $scope.selectedCountry,
+      oriProducts = $scope.oriProducts;
 
-      console.log($scope.descBlocks);
-      $scope.descBlocks.each(function () {
-        var that = $(this);
-        if (that.attr('id') == descBlock.attr('id')) {
-          return;
-        } else {
-          if (that.css('display') != 'none') {
-            that.hide();
-          }
-        }
-      });
+    if (preObj != undefined) {
+      $('#h-n-' + preObj).removeClass('h-n-i-selected').addClass('h-n-itm');
     }
 
-    subMenuBlock.slideToggle('normal');
+    if (preObj == cid) {
+      $scope.selectedCountry = undefined;
+      for (i in oriProducts) {
+        cuProd = oriProducts[i];
+        if (cuProd.country != cid) {
+          if (cata == undefined || cata == cuProd.cata) {
+            $('#d-' + cuProd._id).show();
+          }
+        }
+      }
+    } else {
+      that.removeClass('h-n-itm').addClass('h-n-i-selected');
+      $scope.selectedCountry = cid;
+      for (i in oriProducts) {
+        cuProd = oriProducts[i];
+        if (cuProd.country != cid) {
+          $('#d-' + cuProd._id).hide();
+        } else {
+          if (cata == undefined || cata == cuProd.cata) {
+            $('#d-' + cuProd._id).show();
+          }
+        }
+      }
+    }
   };
 
-  $scope.productLine = function (cata) {
+  /*
+   *选择类目
+   */
+  $scope.choseCata = function (cata) {
+    hideSupplies();
 
+    var cuProd,
+      i = 0,
+      caid = cata._id,
+      that = $('#h-n-' + cata._id),
+      preObj = $scope.selectedCata,
+      country = $scope.selectedCountry,
+      oriProducts = $scope.oriProducts;
+
+    if (preObj != undefined) {
+      $('#h-n-' + preObj).removeClass('h-n-i-selected').addClass('h-n-itm');
+    }
+
+    if (preObj == caid) {
+      $scope.selectedCata = undefined;
+      for (i in oriProducts) {
+        cuProd = oriProducts[i];
+        if (cuProd.cata != caid) {
+          if (country == undefined || country == cuProd.country) {
+            $('#d-' + cuProd._id).show();
+          }
+        }
+      }
+    } else {
+      that.removeClass('h-n-itm').addClass('h-n-i-selected');
+      $scope.selectedCata = caid;
+      for (i in oriProducts) {
+        cuProd = oriProducts[i];
+        if (caid != cuProd.cata) {
+          $('#d-' + cuProd._id).hide();
+        } else {
+          if (country == undefined || country == cuProd.country) {
+            $('#d-' + cuProd._id).show();
+          }
+        }
+      }
+    }
   };
 
-  $scope.supplySelect = function (supply) {
+  /*
+   *获取所有国家
+   */
+  youcome.Events.trigger('getCountries', $scope, $http, null, function ($scope, result) {
+    $scope.countries = result;
+  });
 
-  };
+  /*
+   *获取所有类目
+   */
+  youcome.Events.trigger('getCatagories', $scope, $http, null, function ($scope, catas) {
+    $scope.catas = catas;
 
-  $scope.showCountry = function () {
+    /*
+     *获取所有品牌
+     */
+    youcome.Events.trigger('getProducts', $scope, $http, null, function ($scope, products) {
+      $scope.oriProducts = products;
+      constructCataProducts(catas, products, $scope);
 
-  };
+      /*
+       *获取供应品
+       */
+      youcome.Events.trigger('getSupplies', $scope, $http, null, function ($scope, supplies) {
+        $scope.supplies = supplies;
+        constructProductSupplies(products, supplies, $scope);
+
+        initSelected($scope, $routeParams);
+
+      });
+    });
+  });
+
 });
 
-function productBrandList ($scope, $http, $routeParams) {
-  $scope.products = [];
-  $http({
-    url:"/api/products",
-    method: "GET"
-  }).success(function (products) {
-    $scope.products = products;
-    var productId = $routeParams.productId;
-    if (productId == undefined || productId == null) {
-      suppliesBrandShow(products[0]);
-      suppliesDisplay($scope, $http, products[0]._id);
-    } else {
-      selectedProduct(productId, $http, $scope);
-    }
-  }).error(function (err) {
-    console.log(err);
-  })
+
+function hideSupplies () {
+  var supplyBlock = $('#supply-info');
+  var productList = $('#product-list');
+
+  if (supplyBlock.css('display') != 'none' && productList.css('display') == 'none') {
+    supplyBlock.toggle('normal', function () {
+      productList.toggle('normal');
+    });
+  }
 }
 
-function selectedProduct (productId, $http, $scope) {
-  $http({
-    "url": "/api/products",
-    "method": "GET",
-    "params": {"productId": productId}
-  }).success(function (result) {
-    console.log(result);
-    suppliesBrandShow(result);
-    suppliesDisplay($scope, $http, result._id);
-  }).error(function (err) {
-    console.log(err);
-  })
-}
-
-function suppliesDisplay ($scope, $http, productId) {
-  $scope.supplies = [];
-  $http({
-    url: "/api/supplies",
-    method: "GET",
-    params: {"productId": productId}
-  }).success(function (supplies) {
-    $scope.supplies = supplies;
-  }).error(function (err) {
-    console.log(err);
-  })
-}
-
-function suppliesBrandShow (product) {
-  $("#product-brand-image").attr("src", product.imagePath);
-  $("#product-brand-desc").html(product.desc);
-  $("#product-brand-title").html(product.title);
-}
-
-function countryList($scope, $http) {
-  $scope.countries = [];
-  $http({
-    url: '/api/countries',
-    method: 'GET',
-  }).success(function (result) {
-    $scope.countries = result;
-    productsList($scope, $http);
-  }).error(function (err) {
-    console.log(err);
-  });
-}
-
-function productsList($scope, $http) {
-  var countries = $scope.countries;
-  $http({
-    url: '/api/products',
-    method: 'GET'
-  }).success(function (result) {
-    for(var ct in countries) {
-      var cid = countries[ct]._id;
-      var products = result;
-      var product = undefined;
-      $scope.products[cid] = [];
-      for (var pd in products) {
-        product = products[pd];
-        if (product.country == cid) {
-          $scope.products[cid].push(products[pd]);
-        }
+/*
+ *构造种类和品牌的分类数组
+ */
+function constructCataProducts (catas, products, $scope) {
+  var i, j, caid;
+  for (i in catas) {
+    caid = catas[i]._id;
+    $scope.cataProducts[caid] = [];
+    for (j in products) {
+      if (caid == products[j].cata) {
+        $scope.cataProducts[caid].push(products[j]);
       }
     }
-  }).error(function (err) {
-    console.log(err);
-  });
+  }
 }
-})();
+
+/*
+ *构造品牌和商品的分类数组
+ */
+function constructProductSupplies (products, supplies, $scope) {
+  var p, q, pid;
+  for (p in products) {
+    pid = products[p]._id;
+    $scope.prodSupplies[pid] = [];
+    for (q in supplies) {
+      if (pid == supplies[q].productId) {
+        $scope.prodSupplies[pid].push(supplies[q]);
+      }
+    }
+  }
+}
+
+/*
+ *预选函数
+ */
+function initSelected ($scope, $routeParams) {
+  var passCata, passProduct;
+
+  passCata =  $routeParams.cata;
+  passProduct = $routeParams.product;
+
+  if (passCata != undefined) {
+    for (var i in $scope.catas) {
+      if ($scope.catas[i]._id == passCata) {
+        $scope.choseCata($scope.catas[i]);
+        break;
+      }
+    }
+  } else if (passProduct != undefined) {
+    for (var i in $scope.oriProducts) {
+      if ($scope.oriProducts[i]._id == passProduct) {
+        $scope.choseProduct($scope.oriProducts[i], 1);
+        break;
+      }
+    }
+  }
+}
+
+})(window);

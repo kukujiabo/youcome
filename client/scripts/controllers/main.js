@@ -24,37 +24,36 @@ angular.module("yocomeApp")
     window.location.href="/products?productId=" + productId;
   };
 
-  $scope.productLine = function (cata) {
-    console.log($scope.cataProds);
+  $scope.brandLeave = function () {
+    var brand = $('#m-p-line');
+    if (brand.css('display') != 'none') {
+      brand.toggle('normal');
+    }
 
-    if ('none' != $scope.mpLine.css('display')) {
-      $scope.mpLine.toggle('normal', function () {
-        $scope.cataProds = [];
+    $('.circle-brand-over').removeClass('circle-brand-over').addClass('circle-brand');
+  }
+
+  $scope.brandOver = function (cata) {
+    var brand = $('#m-p-line');
+
+    var img = $('#ic-' + cata._id);
+
+    $('.circle-brand-over').removeClass('circle-brand-over').addClass('circle-brand');
+
+    img.removeClass('circle-brand').addClass('circle-brand-over');
+
+    if ($scope.products[cata._id] == undefined) {
+      productsList($scope, $http, function () {
+        $scope.productLine(cata);
       });
-
-      if ($scope.cuCata == cata._id) {
-        return;
+      return;
+    } else {
+      $scope.cataProds = $scope.products[cata._id];
+      if (brand.css('display') == 'none') {
+        brand.toggle('normal');
       }
     }
 
-    $scope.cuCata = cata._id;
-
-    if ($scope.products[cata._id].length == 0) {
-      return;
-    }
-
-    if ($scope.products == undefined || $scope.products.length == 0) {
-      productsList($scope, $http);
-    }
-
-    if ($scope.mpLine.css('display') != 'none') {
-      $scope.mpLine.toggle('normal', function () {
-        $scope.cataProds = [];
-      });
-    } else {
-      $scope.cataProds = $scope.products[cata._id];
-      $scope.mpLine.toggle('normal');
-    }
   };
 });
 
@@ -69,7 +68,7 @@ function cataList ($scope, $http) {
   });
 }
 
-function productsList ($scope, $http) {
+function productsList ($scope, $http, callback) {
   $http({
     url: '/api/products',
     method: 'GET'
@@ -88,6 +87,11 @@ function productsList ($scope, $http) {
         }
       }
     }
+
+    if (typeof(callback) == 'function') {
+      callback();
+    }
+
   }).error(function (err) {
     console.log(err);
   });

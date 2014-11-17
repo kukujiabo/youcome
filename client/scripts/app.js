@@ -1,6 +1,5 @@
 "use strict";
-
-angular
+var app = angular
 .module("yocomeApp", [
   "ngAnimate",
   "ngResource",
@@ -28,11 +27,11 @@ angular
       templateUrl: "views/contact.html",
       controller: "ContactCtrl"
     })
-    .when("/arts", {
+    .when("/culture", {
       templateUrl: "views/arts.html",
       controller: "ArtsCtrl"
     })
-    .when("/flagship", {
+    .when("/shops", {
       templateUrl: "views/flagship.html",
       controller: "FlagshipCtrl"
     })
@@ -41,42 +40,55 @@ angular
     });
 });
 
-function AnimaCtrl ($scope, $http) {
-  $scope.arts = [];
-  $scope.beforeOver = undefined;
-  $http({
-    url: "/api/arts",
-    method: "GET"
-  }).success(function (arts) {
-    $scope.arts = arts;
-  }).error(function (err) {
-    console.log(err);
-  });
-
-  $scope.showBrandPicture = function (that, art) {
-    if ($scope.beforeOver != undefined) {
-      $scope.beforeOver.removeClass("active");
+app.directive('fileUploader', function () {
+  return {
+    restrict: 'E',
+    transclude: true,
+    template: '<div><input type="file" multiple /><button ng-click="upload()">Upload</button></div>'
+      + '<ul><li ng-repeat="file in files"> - </li></ul>',
+    controller: function ($scope, $fileUpload) {
+      $scope.ready = false;
+      $scope.upload = function () {
+        $fileUpload.upload($scope.files);
+      };
+    },
+    /*
+     * link the compiled template with scope
+     */
+    link: function ($scope, $element) {
+      var fileInput = $element.find('input[type="file"]');
+      fileInput.bind('change', function (e) {
+        $scope.ready = !(e.target.files.length == 0);
+        $scope.files = [];
+        for (var i in e.target.files) {
+          if (typeof e.target.files[i] == 'object') {
+            $scope.files.push(e.target.files[i]);
+          }
+        }
+      });
     }
-
-    $("#" + art._id).addClass('active');
-    $("#brand-pic").attr("src", art.imgPath);
-    $("#brand-desc").html(art.desc);
-    $scope.beforeOver = $("#" + art._id);
   }
-}
-
-angular.module("yocomeApp")
-.controller("FlagshipCtrl", function ($scope, $http) {
-  $scope.displayLarge = function (that) {
-  };
-
-  $http({
-    "url": "/api/flagship",
-    "method": "GET"
-  }).success(function (result) {
-    $scope.flags = result;
-  }).error(function (err) {
-    console.log(err);
-  });
 });
 
+app.service('$fileUpload', ['$http', function ($http) {
+  this.upload = function (files) {
+    var formData = new FormData();
+    for (var i in files) {
+      formData.append('file_' + i, files[i]);
+    }
+    console.log(formData);
+    $http({
+      method: 'POST',
+      url: '/api/upload',
+      data: formData,
+      header: {
+        'Content-Type': undefined
+      },
+      transformRequest: angular.identity
+    }).success(function (data, status, headers, config) {
+      console.log(data);
+    }).error(function (err) {
+      console.log(err);
+    });
+  }
+}]);

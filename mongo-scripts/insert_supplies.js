@@ -1,12 +1,48 @@
 db.supplies.insert({
-  productId: "543e4c62efb39948d5ab2f73",
-  name: "皇家棕啤酒（1L）",
+  productId: "54434d1342dffe76d767cf83",
+  name: "凯撒西蒙黑啤",
   desc: "",
-  imagePath: "/images/supply/royal-1000.jpg",
-  wort_dense: "10.6度",
-  alcohol_dense: "4.6%",
-  specification: "1L*12",
-  sell_by_date: "15个月",
-  box_size: "40.52*27.52*17.13 500ml",
+  imagePath: "/images/supply/kaisa-500.jpg",
+  wort_dense: "11.5度",
+  alcohol_dense: "5.1%",
+  specification: "5L*2",
+  sell_by_date: "12个月",
+  box_size: "",
+  active: 1
+});
+db.supplies.insert({
+  productId: "54434d1342dffe76d767cf83",
+  name: "凯撒西蒙白啤",
+  desc: "",
+  imagePath: "/images/supply/kaisa-500.jpg",
+  wort_dense: "11.5度",
+  alcohol_dense: "5.1%",
+  specification: "5L*2",
+  sell_by_date: "12个月",
+  box_size: "",
+  active: 1
+});
+db.supplies.insert({
+  productId: "54434d1342dffe76d767cf83",
+  name: "凯撒西蒙黑啤",
+  desc: "",
+  imagePath: "/images/supply/kaisa-500.jpg",
+  wort_dense: "11.5度",
+  alcohol_dense: "5.1%",
+  specification: "500ml*24",
+  sell_by_date: "18个月",
+  box_size: "",
+  active: 1
+});
+db.supplies.insert({
+  productId: "54434d1342dffe76d767cf83",
+  name: "凯撒西蒙白啤",
+  desc: "",
+  imagePath: "/images/supply/kaisa-500.jpg",
+  wort_dense: "11.5度",
+  alcohol_dense: "5.1%",
+  specification: "500ml*24",
+  sell_by_date: "18个月",
+  box_size: "",
   active: 1
 });

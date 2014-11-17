@@ -1,6 +1,4 @@
-var Controllers = function () {
-
-}
+var Controllers = function () {};
 
 Controllers.brand = require("./brand");
 
@@ -21,5 +19,13 @@ Controllers.flagships = require("./flagships");
 Controllers.countries = require('./countries');
 
 Controllers.catas = require('./catagories');
+
+Controllers.ali = require('./alis');
+
+Controllers.annoucements = require('./announcements');
+
+Controllers.shops = require('./shops');
+
+Controllers.menus = require('./menus');
 
 module.exports = Controllers;
