@@ -13,6 +13,7 @@ function Product (product) {
   this.type = product.type;
   this.country = product.country;
   this.cata = product.cata;
+  this.image = product.image;
 };
 
 module.exports = Product;
@@ -50,7 +51,8 @@ Product.getMuti = function (query, callback) {
     'ord': 1,
     'type': 1,
     'country': 1,
-    'cata': 1
+    'cata': 1,
+    'image': 1
   };
   conditions.order = {"ord": 1};
   mongodb.getMuti(dbName, query, conditions, callback);

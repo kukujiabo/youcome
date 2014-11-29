@@ -8,6 +8,8 @@ function Country (country) {
   this.ord = country.ord;
   this.desc = country.desc;
   this.img = country.img;
+  this.image = country.image;
+  this.imagePath = country.imagePath;
 }
 
 module.exports = Country;
@@ -19,6 +21,8 @@ Country.prototype.save = function (callback) {
     ord:  this.ord,
     desc: this.desc,
     img:  this.img,
+    image: this.image,
+    imagePath: this.imagePath,
     active: this.active
   };
   mongodb.save(dbName, country, callback);

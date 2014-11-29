@@ -4,8 +4,9 @@ var database = require('./db'),
 
 function Catagory (catagory) {
   this.name = catagory.name;
-  this.images = catagory.images;
+  this.image = catagory.image;
   this.active = catagory.active;
+  this.imagePath = catagory.imagePath;
   this.desc = catagory.desc;
 }
 
@@ -13,10 +14,11 @@ module.exports = Catagory;
 
 Catagory.prototype.save = function (callback) {
   var catagory = {
-    name: this.name, 
-    images: this.images,
+    name: this.name,
+    image: this.image,
     active: this.active,
-    desc: this.desc
+    desc: this.desc,
+    imagePath: this.imagePath
   };
   mongodb.save(dbName, catagory, callback);
 };
@@ -31,12 +33,14 @@ Catagory.getMuti = function (query, callback) {
     _id: 1,
     name: 1,
     desc: 1,
-    images: 1,
+    image: 1,
     active: 1,
+    imagePath: 1,
     ord: 1
   };
 
   conditions.order = {'ord': 1};
   mongodb.getMuti(dbName, query, conditions, callback);
+
 };
 
