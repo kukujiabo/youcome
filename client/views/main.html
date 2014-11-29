@@ -5,14 +5,14 @@
         <div id="brand-wrap" ng-mouseleave="brandLeave()">
           <div class="container main-brand" >
             <a class="brand-item text-center" href="/products?cata={{cata._id}}" ng-mouseover="brandOver(cata)" ng-repeat="cata in catas">
-              <img class="img-circle circle-brand" id="ic-{{cata._id}}" src="/images/{{cata.images}}">
+              <img class="img-circle circle-brand" id="ic-{{cata._id}}" src="{{cata.imagePath}}{{cata.image}}">
               <p>{{cata.name}}</p>
             </a>
           </div>
           <div class="container main-products">
             <div class="hide-block" id="m-p-line">
               <a class="p-b-icon text-center" href="/products?product={{cataProd._id}}" ng-repeat="cataProd in cataProds">
-                <img class="img-thumbnail p-b-img" src="{{cataProd.imagePath}}">
+                <img class="img-thumbnail p-b-img" src="{{cataProd.imagePath}}{{cataProd.image}}">
                 <br>
                 <span>{{cataProd.name}}</span>
               </a>

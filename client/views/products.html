@@ -4,12 +4,12 @@
       <div class="well left-block full-nav"  style="text-align:center;">
         <ul class="horizal-nav" id="country-nav">
           <li class="h-n-itm" ng-click="choseCountry(country)" id="h-n-{{country._id}}" ng-repeat="country in countries">
-            <img class="tiny-flag" src="/images/flag/{{country.img}}">{{country.name}}
+            <img class="tiny-flag" src="{{country.imagePath}}{{country.image}}">{{country.name}}
           </li>
         </ul>
         <ul class="horizal-nav" id="cata-nav">
           <li class="h-n-itm" ng-click="choseCata(cata)"  id="h-n-{{cata._id}}" ng-repeat="cata in catas">
-            <img class="img-circle p-flag" src="/images/{{cata.images}}">{{cata.name}}
+            <img class="img-circle p-flag" src="{{cata.imagePath}}{{cata.image}}">{{cata.name}}
           </li>
         </ul>
       </div>
@@ -19,7 +19,7 @@
       <div class="wrap product-line" id="cata-{{cata._id}}" ng-repeat="cata in catas">
         <ul class="u-line">
           <li class='u-l-itm left-block' ng-click="choseProduct(product)" id="d-{{product._id}}" ng-repeat="product in cataProducts[cata._id]">
-            <img class="img-thumbnail p-b-img" src="{{product.imagePath}}">
+            <img class="img-thumbnail p-b-img" src="{{product.imagePath}}{{product.image}}">
             <p>{{product.name}}</p>
           </li>
           <div style="clear:both"></div>
@@ -32,7 +32,7 @@
         <div class="wrap row">
           <div class="col-sm-3">
             <a class="m-back">-</a>
-            <img class="img-thumbnail product-img" id="s-prod-img" src="{{cuProd.imagePath}}">
+            <img class="img-thumbnail product-img" id="s-prod-img" src="{{cuProd.imagePath}}{{cuProd.image}}">
           </div>
           <div class="col-sm-9">
             <h4 class="page-header">{{cuProd.name}}</h4>
