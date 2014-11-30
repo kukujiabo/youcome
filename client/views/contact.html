@@ -1,12 +1,21 @@
-<div class="container contact-container">
-  <div class="row">
-    <div class="col-sm-5 card-board" ng-controller="ContactCtrl">
-      <h3>上海酉康实业有限公司</h3>
-      <ul class="list-group">
-        <li class="list-group-item" ng-repeat="contact in contacts">
-          <em>{{contact.name}}：</em>{{contact.value}}
-        </li>
-      </ul>
-    </div>
+<div class="contact-container">
+  <div class="well contact-wall" ng-controller="ContactCtrl">
+    <h2 class="page-header">酉康名片墙</h2>
+    <ul class="list-group contact-block" ng-repeat="contact in contacts">
+      <li class="list-group-item" >
+          联系人：<em>{{contact.name}}</em>
+      </li>
+      <li class="list-group-item" >
+          职务：<em>{{contact.position}}</em>
+      </li>
+      <li class="list-group-item" >
+          联系电话：<em>{{contact.phone}}</em>
+      </li>
+      <li class="list-group-item" >
+          联系邮箱：<em>{{contact.email}}</em>
+      </li>
+    </ul>
+    <div style="clear: both"></div>
   </div>
+  <div style="clear: both"></div>
 </div>

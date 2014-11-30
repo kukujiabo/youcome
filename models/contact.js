@@ -5,9 +5,10 @@ var database = require("./db"),
 function Contact (contact) {
   this._id = contact._id;
   this.name = contact.name;
-  this.value = contact.value;
-  this.active = contact.active;
-  this.ord = contact.ord;
+  this.position = contact.position;
+  this.phone = contact.phone;
+  this.email = contact.email;
+  this.ord = Contact.ord;
 }
 
 module.exports = Contact;
@@ -15,8 +16,9 @@ module.exports = Contact;
 Contact.prototype.save = function (callback) {
   var contact = {
     name: this.name,
-    value: this.value,
-    active: this.active,
+    position: this.position,
+    phone: this.phone,
+    email: this.email,
     ord: this.ord
   };
   mongodb.save(dbName, contact, callback);
@@ -31,8 +33,9 @@ Contact.getMuti = function (query, callback) {
   conditions.fields = {
     "_id": 1,
     "name": 1,
-    "value": 1,
-    "active": 1,
+    "position": 1,
+    "phone": 1,
+    "email": 1,
     "ord": 1
   };
 
