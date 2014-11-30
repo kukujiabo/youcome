@@ -393,11 +393,6 @@ div.side-padding-10 {
   background-color: #ccc;
 }
 
-.contact-container {
-  width:900px;
-  margin-top:50px;
-}
-
 .index-nav {
   width: 1000px;
 }
@@ -616,6 +611,20 @@ div.side-padding-10 {
   background-color: #666;
   width: 10px;
   height: 20px;
+}
+
+.contact-block {
+
+  float: left;
+
+  margin: 10px 20px;
+
+  width: 280px;
+
+}
+
+.contact-wall {
+  text-align: center;
 }
 
 #index-wrap {
